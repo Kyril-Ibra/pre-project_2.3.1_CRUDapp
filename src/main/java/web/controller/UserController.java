@@ -14,7 +14,6 @@ public class UserController {
 
     @Autowired
     public UserController(UserService userService) {
-        super();
         this.userService = userService;
     }
 
@@ -38,24 +37,24 @@ public class UserController {
 
     @GetMapping("users/edit/{id}")
     public String edit(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userService.show(id));
+        model.addAttribute("user", userService.getUserById(id));
         return "edit_user";
     }
 
     @PostMapping("/users/{id}")
     public String update(@PathVariable int id, @ModelAttribute("user") User user) {
-        User existingUser = userService.show(id);
+        User existingUser = userService.getUserById(id);
         existingUser.setId(id);
         existingUser.setName(user.getName());
         existingUser.setLastName(user.getLastName());
         existingUser.setEmail(user.getEmail());
-        userService.update(existingUser);
+        userService.updateUser(existingUser);
         return "redirect:/users";
     }
 
     @GetMapping("/users/{id}")
     public String delete(@PathVariable("id") int id) {
-        userService.delete(id);
+        userService.deleteUser(id);
         return "redirect:/users";
     }
 }
