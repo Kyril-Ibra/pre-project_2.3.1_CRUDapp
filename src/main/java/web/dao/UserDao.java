@@ -7,7 +7,7 @@ public interface UserDao {
     void saveUser(User user);
     User getUserById(int id);
     void updateUser(User user);
-    void deleteUser(int id);
+    void deleteUserById(int id);
     List<User> getAllUsers();
 }
 

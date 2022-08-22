@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
     }
     @Transactional
     @Override
-    public void deleteUser(int id) {
-        this.dao.deleteUser(id);
+    public void deleteUserById(int id) {
+        this.dao.deleteUserById(id);
     }
     @Override
     public List<User> getAllUsers() {
